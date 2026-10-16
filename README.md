@@ -48,3 +48,10 @@ bound.
 If the derivative is exactly zero at an iterate the solver stops with
 `failed=True` and `message` mentions the derivative; it does not attempt a
 rescue step.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
